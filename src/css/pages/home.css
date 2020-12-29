@@ -11,13 +11,22 @@
     margin: 20px 0px;
 }
 
+.home_card h4 {
+    position: absolute;
+    bottom: 20px;
+    left: 130px;
+}
+
+.home_main_text {
+    width: 100%;
+}
+
 body {
     background: #efefef;
     font-family: Lato, sans-serif;
 }
 .center {
     width: 100%;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 class App extends React.Component {
     constructor(props) {
@@ -28,10 +26,6 @@ class App extends React.Component {
         return (
           <div className="App">
             <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Edit <code>src/App.js</code> and save to reload.
-              </p>
               <form onSubmit={this.handleSubmit}>
                 <label htmlFor="name">Enter your name: </label>
                 <input

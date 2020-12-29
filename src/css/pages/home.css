@@ -1,0 +1,59 @@
+.home_container {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url("../../images/basketball_background.svg");
+}
+
+.home_card {
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-height: 150px;
+    margin: 20px 0px;
+}
+
+body {
+    background: #efefef;
+    font-family: Lato, sans-serif;
+}
+.center {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardone {
+    width: 100%;
+    max-width: 450px;
+    height: 580px;
+    margin: 20px 20px;
+    background-image: url("../../images/orange_nike.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 10px 0px 20px rgba(255, 255, 255, 0.7);
+}
+
+.cardtwo {
+    width: 100%;
+    max-width: 450px;
+    height: 580px;
+    margin: 20px 20px;
+    background-image: url("../../images/offwhite.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 5px 0px 5px rgba(255, 255, 255, 0.7);
+}
+
+.cardone .logo,
+.cardtwo .logo {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    width: 55px;
+}

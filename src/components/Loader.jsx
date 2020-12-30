@@ -1,7 +1,7 @@
 // Requirements
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "../css/loader.css";
+import "../css/components/loader.css";
 
 // Exported functions
 const Loader = ({

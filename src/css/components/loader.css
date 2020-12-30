@@ -6,7 +6,7 @@
 .stage {
     min-height: 100vh;
     min-width: 100vw;
-    background-image: url("../images/basketball_background.svg");
+    background-image: url("../../images/basketball_background.svg");
     flex-direction: column;
 }
 

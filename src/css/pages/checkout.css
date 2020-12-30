@@ -1,0 +1,30 @@
+.home_container {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url("../../images/basketball_background.svg");
+}
+
+.checkout_form {
+    width: 400px;
+    max-width: 90%;
+}
+
+.checkout_form input,
+.checkout_form select {
+    height: 50px;
+    width: 100%;
+}
+
+.checkout_form_submit {
+    width: 300px;
+    max-width: 90%;
+    height: 40px;
+    padding: 10px 30px;
+    border-radius: 20px;
+    background-color: #85bb65 ;
+}
+
+.checkout_form_submit:hover {
+    opacity: .4;
+    transform: scale(1.05);
+}

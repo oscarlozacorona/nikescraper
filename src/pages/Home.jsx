@@ -23,7 +23,7 @@ const Home = ({ history }) => (
                         alt='nike logo'
                     />
                 </button>
-                <button class='cardtwo home_card' onClick={() => history.push("/get-shoes")}>
+                <button class='cardtwo home_card' onClick={() => history.push("/checkout")}>
                     <h4 className='text-white'>Purchase Shoes</h4>
                     <img
                         class='logo'

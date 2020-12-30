@@ -15,7 +15,6 @@ const GetShoes = () => {
     
     // Internal functions
     const onSuccess = (res) => {
-        console.log(res.shoes);
         setShoes(res.shoes);
     }
 
@@ -43,25 +42,30 @@ const GetShoes = () => {
         if (shoes && shoes[0]) {
             mapShoes = shoes.map((shoe, index) => {
                 return (
-                    <>
-                        <CopyToClipboard text={shoe.itemUrl} onCopy={() => alert("copied to clipboard")}>
-                            <div key={`${shoe.itemSubName}_${index}`} className="card col-12 col-md-5 col-lg-3 shoeName_card p-0">
-                                <img src={shoe.itemImage} alt={shoe.itemSubName}/>
-                                <div className="align-items-center p-4">
-                                    <h4 className="text-dark">{shoe.itemName}</h4>
-                                    <p className="darktext">{shoe.itemSubName}</p>
-                                    <p className="darktext">{shoe.price}</p>
-                                    {shoe.date && <p className="darktext">{shoe.date}</p>}
-                                </div>
+                    <CopyToClipboard text={shoe.itemUrl} onCopy={() => alert("copied to clipboard")}>
+                        <div key={`${shoe.itemSubName}_${index}`} className="card col-12 col-md-5 col-lg-3 shoeName_card p-0">
+                            <img src={shoe.itemImage} alt={shoe.itemSubName}/>
+                            <div className="align-items-center p-4">
+                                <h4 className="text-dark">{shoe.itemName}</h4>
+                                <p className="darktext">{shoe.itemSubName}</p>
+                                <p className="darktext">{shoe.price}</p>
+                                {shoe.date && <p className="darktext">{shoe.date}</p>}
                             </div>
-                        </CopyToClipboard>
-                    </>
+                        </div>
+                    </CopyToClipboard>
                 );
-            })};
-
+            });
+        };
         setMappedShoes(mapShoes);
-        setLoading(false);
     }, [shoes]);
+
+    useEffect(() => {
+        if (mappedShoes && mappedShoes[0]) {
+            setTimeout(() => {
+                setLoading(false);
+            }, 2000)
+        };
+    }, [mappedShoes])
 
     return (
         <Loader loading={loading}>
@@ -70,7 +74,7 @@ const GetShoes = () => {
                     <div className='d-flex text-center p-5'>
                         <h1 className='text-white home_main_text'>
                             Shoe Inventory
-                            <span>😈</span>
+                            <span>🥳</span>
                         </h1>
                     </div>
                     <div className='d-flex justify-content-center p-5'>

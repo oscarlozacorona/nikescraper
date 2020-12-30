@@ -20,6 +20,17 @@ app.get("/api/getshoes", async (req, res) => {
     };
 });
 
+app.post("/api/purchase", async (req, res) => {
+    try {
+        console.log(res.body);
+
+        res.setHeader("Content-Type", "application/json");
+        res.send(JSON.stringify({ message: success }));
+    } catch (error) {
+        res.status(500).send({err: error});
+    };
+});
+
 app.listen(3001, () =>
     console.log("Express server is running on localhost:3001")
 );

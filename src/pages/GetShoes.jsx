@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { items } from '../items';
+import Loader from '../components/Loader';
 import '../css/pages/getShoes.css';
 
 // Exported fucntions
@@ -10,6 +11,7 @@ const GetShoes = () => {
     // State
     const [shoes, setShoes] = useState([]);
     const [mappedShoes, setMappedShoes] = useState([]);
+    const [loading, setLoading] = useState(true);
     
     // Internal functions
     const onSuccess = (res) => {
@@ -58,30 +60,32 @@ const GetShoes = () => {
             })};
 
         setMappedShoes(mapShoes);
-
+        setLoading(false);
     }, [shoes]);
 
     return (
-        <div className='container d-flex justify-content-center home_container'>
-            <div className='col-12 justify-content-center'>
-                <div className='d-flex text-center p-5'>
-                    <h1 className='text-white home_main_text'>
-                        Shoe Inventory
-                        <span>😈</span>
-                    </h1>
-                </div>
-                <div className='d-flex justify-content-center p-5'>
-                    <button className="cool_button" onClick={() => scrapeShoes()}>
-                        Available Shoes
-                    </button>
-                </div>
-                <div className="container">
-                    <div className="row shoeName_container">
-                        {mappedShoes && mappedShoes[0] ? mappedShoes : null}
+        <Loader loading={loading}>
+            <div className='container d-flex justify-content-center home_container'>
+                <div className='col-12 justify-content-center'>
+                    <div className='d-flex text-center p-5'>
+                        <h1 className='text-white home_main_text'>
+                            Shoe Inventory
+                            <span>😈</span>
+                        </h1>
+                    </div>
+                    <div className='d-flex justify-content-center p-5'>
+                        <button className="cool_button" onClick={() => scrapeShoes()}>
+                            Available Shoes
+                        </button>
+                    </div>
+                    <div className="container">
+                        <div className="row shoeName_container">
+                            {mappedShoes && mappedShoes[0] ? mappedShoes : null}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Loader>
     );
 };
 

@@ -6,7 +6,6 @@ import "../css/components/loader.css";
 // Exported functions
 const Loader = ({
     loading = false,
-    loadingMessage = "",
     errorMessage = "",
     children,
 }) => {

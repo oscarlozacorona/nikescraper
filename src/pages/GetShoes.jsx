@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { items } from '../items';
 import Loader from '../components/Loader';
 import '../css/pages/getShoes.css';
 
@@ -11,7 +10,7 @@ const GetShoes = () => {
     // State
     const [shoes, setShoes] = useState([]);
     const [mappedShoes, setMappedShoes] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     
     // Internal functions
     const onSuccess = (res) => {
@@ -26,6 +25,7 @@ const GetShoes = () => {
 
 
     const scrapeShoes = () => {
+        setLoading(true);
         fetch("http://localhost:3001/api/getshoes")
         .then(res => res.json())
         .then(res => onSuccess(res))
@@ -33,10 +33,6 @@ const GetShoes = () => {
     }
 
     // Effects
-    useEffect(() => {
-        setShoes(items);
-    }, []);
-
     useEffect(() => {
         let mapShoes = [];
         if (shoes && shoes[0]) {
@@ -65,7 +61,7 @@ const GetShoes = () => {
                 setLoading(false);
             }, 2000)
         };
-    }, [mappedShoes])
+    }, [mappedShoes]);
 
     return (
         <Loader loading={loading}>

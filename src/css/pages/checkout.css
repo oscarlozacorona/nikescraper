@@ -5,14 +5,26 @@
 }
 
 .checkout_form {
-    width: 400px;
+    width: 800px;
     max-width: 90%;
+}
+
+.checkout_form div {
+    width: 100%;
+    justify-content: center;
 }
 
 .checkout_form input,
 .checkout_form select {
     height: 50px;
     width: 100%;
+}
+
+.checkout_form div input,
+.checkout_form div select {
+    height: 50px;
+    width: 350px;
+    max-width: 100%;
 }
 
 .checkout_form_submit {

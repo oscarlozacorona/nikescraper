@@ -30,6 +30,7 @@ async function selectShoeSize(page, obj) {
 
     // Add to cart
     await page.click("button.ncss-btn-primary-dark.btn-lg");
+    await sleep(3000);
 };
 
 async function sleep(miliseconds) {
@@ -49,6 +50,7 @@ async function checkout(page, obj) {
     await page.type('#address1', obj.address);
     await page.type('#postalCode', obj.zip);
     await page.select('#state', obj.state);
+    await sleep(3000);
     await page.click('#shipping div.ncss-col-sm-12.mt2-sm.va-sm-t.ta-sm-r > button', {delay: 1000});
 
     // Shipping
@@ -69,29 +71,11 @@ async function checkout(page, obj) {
     await page.click("");
 }
 
-async function purchase() {
+async function purchase(obj) {
     const browser = await puppeteer.launch({ 
         headless: false,
         args: [`--window-size=${1024},${1024}`, '--disable-web-security', '--disable-features=IsolateOrigins,site-per-process']
     });
-
-    const obj = {
-        nikeShoeUrl: "https://www.nike.com/launch/t/air-force-1-lv8-pacific-blue",
-        shoeSize: "10.5",
-        firstName: "John",
-        lastName: "Snow",
-        address: "4501 S Alameda St",
-        city: "Los Angeles",
-        state: "CA",
-        zip: "90058",
-        email: "oscar.lozacorona@gmail.com",
-        phone: "5625009669",
-        cardNum: "5403853048418176",
-        expDate: "1025",
-        securityCode: "270",
-        failSafe: true,
-    }
-
 
     const page = await browser.newPage();
     await page.setViewport({ width: 1024, height: 1024 });
@@ -99,6 +83,8 @@ async function purchase() {
     await checkout(page, obj);
 };
 
+//purchase();
+
 module.exports = {
-    purchase,
+    purchase: purchase
 }

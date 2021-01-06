@@ -4,9 +4,14 @@ const pino = require("express-pino-logger")();
 const cors = require('cors');
 
 const scrapeShoeNames = require('./services/getshoes.js');
+const scrapePurchace = require('./services/purchase.js');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+app.use(express.json({
+    type: ['application/json', 'text/plain']
+}))
 app.use(pino);
 app.use(cors());
 
@@ -22,11 +27,13 @@ app.get("/api/getshoes", async (req, res) => {
 
 app.post("/api/purchase", async (req, res) => {
     try {
-        console.log(res.body);
-
+        const { body } = req;
+        console.log(body);
+        await scrapePurchace.purchase(body);
         res.setHeader("Content-Type", "application/json");
-        res.send(JSON.stringify({ message: success }));
+        res.send(JSON.stringify({ message: "hey" }));
     } catch (error) {
+        console.log(error);
         res.status(500).send({err: error});
     };
 });

@@ -43,7 +43,7 @@ const Checkout = () => {
         lastName: "",
         address: "",
         city: "",
-        state: "",
+        state: "CA",
         zip: "",
         email: "",
         phone: "",
@@ -61,9 +61,23 @@ const Checkout = () => {
         setFormFields({ ...formFields, [name]: value });
     };
 
+    const onSuccess = res => {
+        console.log(res);
+    };
+
+    const onError = err => {
+        console.error(err);
+    }
+
     const submitHandler = e => {
         e.preventDefault();
-        console.log(formFields);
+        fetch("http://localhost:3001/api/purchase", {
+            method: 'POST',
+            body: JSON.stringify(formFields)
+        })
+        .then(res => res.json())
+        .then(res => onSuccess(res))
+        .catch(err => onError(err));
     };
 
     //Effects
@@ -162,22 +176,106 @@ const Checkout = () => {
                                 </section>
                             </div>
                             <section
-                                    key='cc_security'
-                                    className='d-flex flex-column m-4 w-80'
-                                >
-                                    <label htmlFor='cc_security'>
-                                        Card Security Code:
-                                    </label>
-                                    <input
-                                        id='cc_security'
-                                        type='text'
-                                        placeholder='XXX'
-                                        name='securityCode'
-                                        onChange={onChange}
-                                        autoComplete='off'
-                                        maxLength='3'
-                                    />
-                                </section>
+                                key='address'
+                                className='d-flex flex-column m-4 w-80'
+                            >
+                                <label htmlFor='address'>Enter Address:</label>
+                                <input
+                                    id='address'
+                                    type='text'
+                                    name='address'
+                                    onChange={onChange}
+                                    autoComplete='off'
+                                />
+                            </section>
+                            <section
+                                key='city'
+                                className='d-flex flex-column m-4 w-80'
+                            >
+                                <label htmlFor='city'>Enter City:</label>
+                                <input
+                                    id='city'
+                                    type='text'
+                                    name='city'
+                                    onChange={onChange}
+                                    autoComplete='off'
+                                />
+                            </section>
+                            <section
+                                key='state'
+                                className='d-flex flex-column m-4 w-80'
+                            >
+                                <label htmlFor='state'>Enter State:</label>
+                                <input
+                                    id='state'
+                                    type='text'
+                                    name='state'
+                                    onChange={onChange}
+                                    autoComplete='off'
+                                />
+                            </section>
+                            <section
+                                key='zip'
+                                className='d-flex flex-column m-4 w-80'
+                            >
+                                <label htmlFor='zip'>Enter Zip:</label>
+                                <input
+                                    id='zip'
+                                    type='text'
+                                    name='zip'
+                                    onChange={onChange}
+                                    autoComplete='off'
+                                />
+                            </section>
+                            <section
+                                key='cardNum'
+                                className='d-flex flex-column m-4 w-80'
+                            >
+                                <label htmlFor='cardNum'>Card Number:</label>
+                                <input
+                                    id='cardNum'
+                                    type='text'
+                                    placeholder='XXXX XXXX XXXX XXXX'
+                                    name='cardNum'
+                                    onChange={onChange}
+                                    autoComplete='off'
+                                    maxLength='16'
+                                />
+                            </section>
+                            <section
+                                key='expDate'
+                                className='d-flex flex-column m-4 w-80'
+                            >
+                                <label htmlFor='expDate'>
+                                    Card Experation:
+                                </label>
+                                <input
+                                    id='expDate'
+                                    type='text'
+                                    placeholder='MMYY'
+                                    name='expDate'
+                                    onChange={onChange}
+                                    autoComplete='off'
+                                    maxLength='4'
+                                />
+                            </section>
+                            <section
+                                key='cc_security'
+                                className='d-flex flex-column m-4 w-80'
+                            >
+                                <label htmlFor='cc_security'>
+                                    Card Security Code:
+                                </label>
+                                <input
+                                    id='cc_security'
+                                    type='text'
+                                    placeholder='XXX'
+                                    name='securityCode'
+                                    onChange={onChange}
+                                    autoComplete='off'
+                                    maxLength='3'
+                                />
+                            </section>
                             <section
                                 key='shoe_size'
                                 className='d-flex flex-column m-4 w-80'

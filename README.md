@@ -1,4 +1,6 @@
-This project was created to practice webscraping with node.js and the puppeteer library.
+This project was created to practice webscraping with node.js, puppeteer, and cheerio. The react app allows you to search for the current available shoes for sale on the nike website. The other portion allows you to purchase the shoes from the react application. 
+
+** note: The application will not actually complete the transaction on nikes' website. This is not a bug, just not a feature I wanted to finish.
 
 # Getting Started
 Using react scripts you can run:
